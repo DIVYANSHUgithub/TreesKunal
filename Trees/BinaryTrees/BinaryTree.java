@@ -23,7 +23,7 @@ public class BinaryTree {
         int value=scanner.nextInt();
         root=new Node(value);
         populate(scanner,root);
-        niceDisplay();
+
     }
     private void populate(Scanner scanner, Node node){
 
@@ -67,16 +67,27 @@ public class BinaryTree {
         display(node.left,indent+"\t");
         display(node.right,indent+"\t");
     }
-    public void niceDisplay(){
-        prettyDisplay(root,0);
+
+    public void prettyDisplay() {
+        prettyDisplay(root, 0);
     }
-    private void prettyDisplay(Node node, int level){
-        if(level!=0){
+
+    private void prettyDisplay(Node node, int level) {
+        if (node == null) {
             return;
         }
-        else{
-            System.out.println("|------->"+node.value);
+
+        prettyDisplay(node.right, level + 1);
+
+        if (level != 0) {
+            for (int i = 0; i < level - 1; i++) {
+                System.out.print("|\t\t");
+            }
+            System.out.println("|------->" + node.value);
+        } else {
+            System.out.println(node.value);
         }
+        prettyDisplay(node.left, level + 1);
     }
 
 

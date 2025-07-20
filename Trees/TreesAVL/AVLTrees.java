@@ -1,5 +1,7 @@
 package org.example.Trees.TreesAVL;
 
+import java.util.Scanner;
+
 public class AVLTrees {
     public class Node{
         private int value;
@@ -218,4 +220,5 @@ public class AVLTrees {
         postorder(node.right, "right node of " + node.value+ " is: ");
         System.out.print(node.value+" ");
     }
+
 }

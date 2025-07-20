@@ -1,5 +1,7 @@
 package org.example.Trees.BinarySearchTrees;
 
+import org.example.Trees.TreesAVL.Practice;
+
 public class BST {
     public class Node{
         private int value;
@@ -146,11 +148,33 @@ public class BST {
         postorder(node.right, "right node of " + node.value+ " is: ");
         System.out.print(node.value+" ");
     }
+    public void prettyDisplay() {
+        prettyDisplay(root, 0);
+    }
+
+    private void prettyDisplay(Node node, int level) {
+        if (node == null) {
+            return;
+        }
+
+        prettyDisplay(node.right, level + 1);
+
+        if (level != 0) {
+            for (int i = 0; i < level - 1; i++) {
+                System.out.print("|\t\t");
+            }
+            System.out.println("|------->" + node.value);
+        } else {
+            System.out.println(node.value);
+        }
+        prettyDisplay(node.left, level + 1);
+    }
 
     public static void main(String[] args) {
         BST tree=new BST();
-        int[] array={5,2,7,1,4,6,9,8,3,10};
+        int[] array={15,8,5,6,9,18,17,22,19};
         tree.populate(array);
+        tree.prettyDisplay();
         //tree.display();
         tree.preorder();
         tree.inorder();
